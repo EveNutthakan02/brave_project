@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <title>&lt;%= htmlWebpackPlugin.options.title %&gt;</title>
+    <style>
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .editable {
+        border: 1px solid #ccc;
+        padding: 5px;
+      }
+      .icons {
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script defer src="main.js"></script></head>
+  <body>
+    <!-- Banner -->
+    <div>
+      <iframe src="banner.html"></iframe>
+    </div>
+
+    <!-- Rights  -->
+    <div>
+      <h1 class="text-3xl font-bold text-center">
+        แก้ไขข้อมูลสิทธิรับเหรียญชัยสมรภูมิ
+      </h1>
+    </div>
+
+    <!-- ข้อมูลผู้รับสิทธิ -->
+    <div class="mt-10">
+      <form id="editForm">
+        <div class="mx-70 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">ผู้รับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <label>เลขประจำตัวประชาชน</label>
+            <div>
+              <span id="edit-idRights" class="editable-field"></span>
+              <button type="button" class="edit-btn ml-2">✏️</button>
+              <button type="button" class="save-btn hidden ml-2">✅</button>
+              <button type="button" class="cancel-btn hidden ml-2">❌</button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <label>ชื่อ-สกุล</label>
+            <div>
+              <span id="edit-nameRights" class="editable-field"></span>
+              <button type="button" class="edit-btn ml-2">✏️</button>
+              <button type="button" class="save-btn hidden ml-2">✅</button>
+              <button type="button" class="cancel-btn hidden ml-2">❌</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ข้อมูลผู้ขอรับสิทธิ -->
+        <div class="mx-70 mt-5 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">ผู้ขอรับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <label>เลขประจำตัวประชาชน</label>
+            <div>
+              <span id="edit-giveRights-id" class="editable-field"></span>
+              <button type="button" class="edit-btn ml-2">✏️</button>
+              <button type="button" class="save-btn hidden ml-2">✅</button>
+              <button type="button" class="cancel-btn hidden ml-2">❌</button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <label>ชื่อ-สกุล</label>
+            <div>
+              <span id="edit-giveRights-name" class="editable-field"></span>
+              <button type="button" class="edit-btn ml-2">✏️</button>
+              <button type="button" class="save-btn hidden ml-2">✅</button>
+              <button type="button" class="cancel-btn hidden ml-2">❌</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- วันที่ขอรับสิทธิ dateVerify -->
+        <div class="mx-70 mt-5 mb-16 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">วันที่ขอรับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <div class="mt-2">
+              <output
+                id="edit-dateVerify"
+                name="edit-dateVerify"
+                class="block w-48 rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center space-x-4 mt-8">
+          <button
+            class="px-6 py-2 mb-12 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-600"
+            type="button"
+            onclick="cancelEdit()"
+          >
+            ยกเลิก
+          </button>
+          <button
+            class="px-6 py-2 mb-12 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+            type="button"
+            onclick="saveEdit()"
+          >
+            บันทึก
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // // ดึงข้อมูลจาก sessionStorage
+      // const id = sessionStorage.getItem("id");
+      // const name = sessionStorage.getItem("name");
+      // const message = sessionStorage.getItem("message");
+
+      // // อัปเดตข้อความใน <span id="rights">
+      // document.addEventListener("DOMContentLoaded", () => {
+      //   const message = sessionStorage.getItem("message");
+      //   const rightsElement = document.getElementById("rights");
+      //   rightsElement.textContent = message;
+      //   const formElement = document.querySelector("form");
+
+      //   if (message === "พบข้อมูลของคุณ") {
+      //     rightsElement.classList.add("text-green-700"); // สีเขียวเข้ม
+      //     rightsElement.classList.remove("text-red-700");
+
+      //     const idCard = sessionStorage.getItem("idCard");
+      //     const titleName = sessionStorage.getItem("titleName");
+      //     const firstName = sessionStorage.getItem("firstName");
+      //     const lastName = sessionStorage.getItem("lastName");
+      //     const idHeir = sessionStorage.getItem("idHeir");
+      //     const titleHeir = sessionStorage.getItem("titleHeir");
+      //     const firstHeir = sessionStorage.getItem("firstHeir");
+      //     const lastHeir = sessionStorage.getItem("lastHeir");
+
+      //     document.getElementById("edit-idRights").textContent = idCard;
+      //     document.getElementById(
+      //       "edit-nameRights"
+      //     ).textContent = `${titleName} ${firstName} ${lastName}`;
+      //     document.getElementById("edit-giveRights-id").textContent =
+      //       idHeir || idCard;
+      //     document.getElementById("edit-giveRights-name").textContent = idHeir
+      //       ? `${titleHeir} ${firstHeir} ${lastHeir}`
+      //       : `${titleName} ${firstName} ${lastName}`;
+      //   }
+      // });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const dateVerify = sessionStorage.getItem("dateVerify");
+
+        if (dateVerify) {
+          const formattedDate = formatThaiDate(dateVerify);
+          document.getElementById("edit-dateVerify").textContent =
+            formattedDate;
+        } else {
+          document.getElementById("edit-dateVerify").textContent =
+            "ไม่มีข้อมูล";
+        }
+      });
+
+      // ฟังก์ชันแปลงวันที่เป็นรูปแบบไทย
+      function formatThaiDate(dateString) {
+        const date = new Date(dateString);
+        const thaiMonths = [
+          "มกราคม",
+          "กุมภาพันธ์",
+          "มีนาคม",
+          "เมษายน",
+          "พฤษภาคม",
+          "มิถุนายน",
+          "กรกฎาคม",
+          "สิงหาคม",
+          "กันยายน",
+          "ตุลาคม",
+          "พฤศจิกายน",
+          "ธันวาคม",
+        ];
+
+        const day = date.getUTCDate(); // วันที่
+        const month = thaiMonths[date.getUTCMonth()]; // เดือน (index 0-11)
+        const year = date.getUTCFullYear() + 543; // แปลงเป็น พ.ศ.
+
+        return `${day} ${month} ${year}`;
+      }
+
+      let activeInput = null; // เก็บค่า input ที่กำลังแก้ไข
+
+      document.querySelectorAll(".edit-btn").forEach((btn) => {
+        btn.addEventListener("click", function (event) {
+          event.stopPropagation(); // ป้องกัน Event Bubble
+
+          const container = this.parentElement;
+          const span = container.querySelector(".editable-field");
+          const saveBtn = container.querySelector(".save-btn");
+          const cancelBtn = container.querySelector(".cancel-btn");
+
+          // ถ้ามี input ที่กำลังเปิดอยู่ ให้บังคับให้บันทึกหรือยกเลิกก่อน
+          if (activeInput && activeInput !== container) {
+            alert("กรุณาบันทึกหรือยกเลิกการแก้ไขก่อน");
+            return;
+          }
+
+          // กำหนด container ที่กำลังแก้ไข
+          activeInput = container;
+
+          // ตรวจสอบว่ามี input อยู่แล้วหรือไม่
+          if (container.querySelector("input")) return;
+
+          // เปลี่ยนจาก <span> เป็น <input>
+          const input = document.createElement("input");
+          input.type = "text";
+          input.value = span.textContent;
+          input.className =
+            "block w-48 rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6";
+
+          container.replaceChild(input, span);
+          input.focus(); // ให้โฟกัสเพื่อป้องกันการเปลี่ยนแปลงอัตโนมัติ
+
+          // แสดงปุ่มบันทึก/ยกเลิก และซ่อนปุ่มดินสอ
+          this.classList.add("hidden");
+          saveBtn.classList.remove("hidden");
+          cancelBtn.classList.remove("hidden");
+
+          // ฟังก์ชันยกเลิกการแก้ไข
+          const cancelEdit = () => {
+            const newSpan = document.createElement("span");
+            newSpan.id = span.id;
+            newSpan.textContent = span.textContent;
+            newSpan.className = "editable-field";
+
+            container.replaceChild(newSpan, input);
+            saveBtn.classList.add("hidden");
+            cancelBtn.classList.add("hidden");
+            btn.classList.remove("hidden");
+            activeInput = null; // ✅ คืนค่า activeInput
+          };
+
+          // ฟังก์ชันบันทึกข้อมูล
+          const saveEdit = async () => {
+            const newValue = input.value;
+            const newSpan = document.createElement("span");
+            newSpan.id = span.id;
+            newSpan.textContent = newValue;
+            newSpan.className = "editable-field";
+
+            container.replaceChild(newSpan, input);
+            saveBtn.classList.add("hidden");
+            cancelBtn.classList.add("hidden");
+            btn.classList.remove("hidden");
+            activeInput = null; // ✅ คืนค่า activeInput
+
+            try {
+              const response = await fetch("/update", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  field: newSpan.id.replace("edit-", ""),
+                  value: newValue,
+                }),
+              });
+
+              const result = await response.json();
+              console.log("อัปเดตสำเร็จ:", result);
+            } catch (error) {
+              console.error("เกิดข้อผิดพลาด:", error);
+            }
+          };
+
+          // ตรวจสอบว่าปุ่มเคยมี Event Listener แล้วหรือไม่
+          cancelBtn.onclick = cancelEdit;
+          saveBtn.onclick = saveEdit;
+        });
+      });
+
+      document.getElementById("saveEdit").addEventListener("click", () => {
+        const editId = sessionStorage.getItem("editId");
+        const newName = document.getElementById("edit-name").value;
+
+        fetch(`http://localhost:3000/updateUser`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: editId, name: newName }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert("อัปเดตข้อมูลสำเร็จ!");
+            sessionStorage.setItem("message", "พบข้อมูลของคุณ");
+            window.location.href = "after_register.html";
+          })
+          .catch((error) => console.error("เกิดข้อผิดพลาด:", error));
+      });
+    </script>
+  </body>
+</html>

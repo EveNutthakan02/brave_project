@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <title>&lt;%= htmlWebpackPlugin.options.title %&gt;</title>
+    <style>
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      .timeline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin: 50px auto;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 40%; /* จัดให้อยู่กึ่งกลาง */
+        left: 0;
+        width: 100%;
+        height: 2px; /* ปรับความสูงให้เล็กลง */
+        background: #ddd;
+        transform: translateY(-40%); /* ปรับให้แนวเส้นอยู่กึ่งกลาง */
+        z-index: -1;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        transition: 0.3s;
+        position: relative; /* ทำให้จัดตำแหน่งสัมพันธ์กับ step */
+      }
+
+      .step p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #4a90e2;
+      }
+
+      .step .circle {
+        background: #4a90e2;
+      }
+      /* 
+      .active .circle {
+        background: #4a90e2;
+      }
+   
+      .completed .circle {
+        background: #4a90e2;
+      }
+
+      .step p,
+      .active p,
+      .completed p {
+        font-weight: bold;
+        color: #4a90e2;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- Banner -->
+    <div>
+      <iframe src="banner.html"></iframe>
+    </div>
+
+    <!-- Search Box -->
+    <div>
+      <h1 class="text-3xl font-bold text-center">ค้นหารายชื่อผู้ขอรับสิทธิ</h1>
+      <div class="flex justify-end space-x-4 px-4">
+        <div class="relative">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder=" "
+            class="peer w-65 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center"
+            required
+          />
+          <label
+            for="searchInput"
+            class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-blue-500 peer-focus:text-sm peer-valid:opacity-0"
+          >
+            เลขบัตรประจำตัวประชาชน13หลัก
+          </label>
+        </div>
+
+        <div class="relative">
+          <button
+            id="searchButton"
+            class="flex items-center gap-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            <span>ค้นหา</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="step">
+        <div class="circle">1</div>
+        <p>ลงทะเบียน</p>
+      </div>
+      <div class="step active">
+        <div class="circle">2</div>
+        <p>ดำเนินการ</p>
+      </div>
+      <div class="step completed">
+        <div class="circle">3</div>
+        <p>สำเร็จ</p>
+      </div>
+    </div>
+
+    <!-- Rights -->
+    <div>
+      <h1 class="text-3xl font-bold text-center">
+        สิทธิรับเหรียญชัยสมรภูมิ :
+        <span id="rights" class="font-semibold"></span>
+        <!--text-green-500-->
+      </h1>
+    </div>
+
+    <!-- ข้อมูลผู้รับสิทธิ -->
+    <div class="mt-10">
+      <form>
+        <div class="mx-70 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">ผู้รับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <label
+              for="idRights"
+              class="block text-sm/6 font-medium text-gray-900"
+              >เลขประจำตัวประชาชน</label
+            >
+            <div class="mt-2">
+              <output
+                id="idRights"
+                name="idRights"
+                class="block w-48 rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <label
+              for="nameRights"
+              class="block text-sm/6 font-medium text-gray-900"
+              >ชื่อ-สกุล</label
+            >
+            <div class="mt-2">
+              <output
+                id="nameRights"
+                name="nameRights"
+                class="block w-auto rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+
+        <!-- ข้อมูลผู้ขอรับสิทธิ -->
+        <div class="mx-70 mt-5 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">ผู้ขอรับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <label
+              for="giveRights-id"
+              class="block text-sm/6 font-medium text-gray-900"
+              >เลขประจำตัวประชาชน</label
+            >
+            <div class="mt-2">
+              <output
+                id="giveRights-id"
+                name="giveRights-id"
+                class="block w-48 rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <label
+              for="giveRights-name"
+              class="block text-sm/6 font-medium text-gray-900"
+              >ชื่อ-สกุล</label
+            >
+            <div class="mt-2">
+              <output
+                id="giveRights-name"
+                name="giveRights-name"
+                class="block w-auto rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+
+        <!-- วันที่ขอรับสิทธิ dateVerify -->
+        <div class="mx-70 mt-5 mb-16 grid gap-y-8 lg:grid-cols-6">
+          <h5 class="text-xl font-bold text-start">วันที่ขอรับสิทธิ</h5>
+          <div class="lg:col-span-2">
+            <div class="mt-2">
+              <output
+                id="show-dateVerify"
+                name="show-dateVerify"
+                class="block w-48 rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 border border-gray-300 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("searchButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // ป้องกันการเปลี่ยนหน้าโดยตรง
+
+          const searchInput = document
+            .getElementById("searchInput")
+            .value.trim();
+
+          if (!searchInput) {
+            alert("กรุณากรอกเลขบัตรประจำตัวประชาชน 13 หลัก");
+            return;
+          }
+
+          // เรียก API เพื่อตรวจสอบข้อมูล
+          fetch(`http://localhost:3000/search?id=${searchInput}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.found) {
+                // แสดงผลเมื่อพบข้อมูล
+                // เก็บข้อมูลลง sessionStorage
+                sessionStorage.setItem("idCard", searchInput);
+                sessionStorage.setItem("titleName", data.data.titleName || "");
+                sessionStorage.setItem("firstName", data.data.firstName || "");
+                sessionStorage.setItem("lastName", data.data.lastName || "");
+                sessionStorage.setItem("idHeir", data.data.idHeir || "");
+                sessionStorage.setItem("titleHeir", data.data.titleHeir || "");
+                sessionStorage.setItem("firstHeir", data.data.firstHeir || "");
+                sessionStorage.setItem("lastHeir", data.data.lastHeir || "");
+                sessionStorage.setItem(
+                  "dateVerify",
+                  data.data.dateVerify || "ไม่มีข้อมูล"
+                );
+                sessionStorage.setItem("message", "พบข้อมูลของคุณ");
+              } else {
+                // แสดงผลเมื่อไม่พบข้อมูล
+                sessionStorage.setItem("message", "ไม่พบข้อมูลของคุณ");
+              }
+
+              // เปลี่ยนหน้าไปยัง after_register.html
+              window.location.href = "after_register.html";
+            })
+            .catch((error) => {
+              console.error("เกิดข้อผิดพลาด:", error);
+              alert("ไม่สามารถค้นหาข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
+            });
+        });
+
+      // ดึงข้อมูลจาก sessionStorage
+      const id = sessionStorage.getItem("id");
+      const name = sessionStorage.getItem("name");
+      const message = sessionStorage.getItem("message");
+
+      // อัปเดตข้อความใน <span id="rights">
+      document.addEventListener("DOMContentLoaded", () => {
+        const message = sessionStorage.getItem("message");
+        const rightsElement = document.getElementById("rights");
+        rightsElement.textContent = message;
+        const formElement = document.querySelector("form");
+
+        if (message === "พบข้อมูลของคุณ") {
+          rightsElement.classList.add("text-green-700"); // สีเขียวเข้ม
+          rightsElement.classList.remove("text-red-700");
+
+          const idCard = sessionStorage.getItem("idCard");
+          const titleName = sessionStorage.getItem("titleName");
+          const firstName = sessionStorage.getItem("firstName");
+          const lastName = sessionStorage.getItem("lastName");
+          const idHeir = sessionStorage.getItem("idHeir");
+          const titleHeir = sessionStorage.getItem("titleHeir");
+          const firstHeir = sessionStorage.getItem("firstHeir");
+          const lastHeir = sessionStorage.getItem("lastHeir");
+
+          document.getElementById("idRights").textContent = idCard;
+          document.getElementById(
+            "nameRights"
+          ).textContent = `${titleName} ${firstName} ${lastName}`;
+          document.getElementById("giveRights-id").textContent =
+            idHeir || idCard;
+          document.getElementById("giveRights-name").textContent = idHeir
+            ? `${titleHeir} ${firstHeir} ${lastHeir}`
+            : `${titleName} ${firstName} ${lastName}`;
+
+          // เพิ่มปุ่มแก้ไข
+          const buttonContainer = document.createElement("div");
+          buttonContainer.className = "flex justify-center space-x-4 mt-8";
+
+          const editButton = document.createElement("button");
+          editButton.id = "editButton";
+          editButton.className =
+            "px-6 py-2 mb-12 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600";
+          editButton.textContent = "แก้ไข";
+          editButton.onclick = () => {
+            //sessionStorage.setItem("editId", sessionStorage.getItem("idCard")); // เก็บ id ไว้
+            window.location.href = "edit.html";
+          };
+
+          // เพิ่มปุ่มยื่นเรื่องใหม่
+          const resubmitButton = document.createElement("button");
+          resubmitButton.id = "resubmitButton";
+          resubmitButton.className =
+            "px-6 py-2 mb-12 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600";
+          resubmitButton.textContent = "ยื่นเรื่องใหม่อีกครั้ง";
+          resubmitButton.onclick = () => {
+            window.location.href = "resubmit.html";
+          };
+
+          buttonContainer.appendChild(editButton);
+          buttonContainer.appendChild(resubmitButton);
+          formElement.parentElement.appendChild(buttonContainer);
+        } else {
+          rightsElement.classList.add("text-red-700"); // สีแดงเข้ม
+          rightsElement.classList.remove("text-green-700");
+          // ซ่อนฟอร์มและ output
+          formElement.style.display = "none";
+
+          // สร้างปุ่มไปยัง register.html
+          const registerButton = document.createElement("button");
+          registerButton.textContent = "ลงทะเบียน";
+          registerButton.className =
+            "mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 block mx-auto mb-12";
+          registerButton.onclick = () =>
+            (window.location.href = "register.html");
+
+          // เพิ่มปุ่มเข้าไปใน DOM
+          formElement.parentElement.appendChild(registerButton);
+        }
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const dateVerify = sessionStorage.getItem("dateVerify");
+
+        if (dateVerify) {
+          const formattedDate = formatThaiDate(dateVerify);
+          document.getElementById("show-dateVerify").textContent =
+            formattedDate;
+        } else {
+          document.getElementById("show-dateVerify").textContent =
+            "ไม่มีข้อมูล";
+        }
+      });
+
+      // ฟังก์ชันแปลงวันที่เป็นรูปแบบไทย
+      function formatThaiDate(dateString) {
+        const date = new Date(dateString);
+        const thaiMonths = [
+          "มกราคม",
+          "กุมภาพันธ์",
+          "มีนาคม",
+          "เมษายน",
+          "พฤษภาคม",
+          "มิถุนายน",
+          "กรกฎาคม",
+          "สิงหาคม",
+          "กันยายน",
+          "ตุลาคม",
+          "พฤศจิกายน",
+          "ธันวาคม",
+        ];
+
+        const day = date.getUTCDate(); // วันที่
+        const month = thaiMonths[date.getUTCMonth()]; // เดือน (index 0-11)
+        const year = date.getUTCFullYear() + 543; // แปลงเป็น พ.ศ.
+
+        return `${day} ${month} ${year}`;
+      }
+
+    
+    </script>
+  </body>
+</html>

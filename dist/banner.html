@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <title>BANNER</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script defer src="main.js"></script></head>
+  <body>
+    <!--Banner-->
+    <div class="relative h-100 w-screen bg-gray-900">
+      <!-- Background Image -->
+      <img
+        src="assets/images/banner.png"
+        alt="Banner Image"
+        class="absolute inset-0 h-full w-full object-cover opacity-75"
+      />
+
+      <!-- Overlay Content -->
+      <div
+        class="relative z-10 flex flex-col items-center h-full text-white text-center px-4 pt-60"
+      >
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          ระบบขอรับสิทธิเหรียญชัยสมรภูมิ
+        </h1>
+      </div>
+
+      <!-- Gradient Overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"
+      ></div>
+    </div>
+
+    <!--Tabs Bar-->
+    <div class="flex justify-around items-center bg-gray-100 shadow-md text-2xl">
+      <!-- Tab 1 -->
+      <div class="relative w-1/4 ">
+        <a
+          href="#"
+          target="_parent"
+          class="flex flex-col items-center text-gray-600 hover:text-blue-500 py-2"
+        >
+          <span>หน้าหลัก สบ.ทบ.</span>
+        </a>
+      </div>
+      <!-- Tab 2 -->
+      <card class="relative w-1/4">
+        <a
+          href="dashboard.html"
+          target="_parent"
+          class="flex flex-col items-center text-gray-600 hover:text-blue-500 py-2"
+        >
+          <span>ค้นหารายชื่อผู้ขอรับสิทธิ</span>
+        </a></card
+      >
+      <!-- Tab 3 -->
+      <card class="relative w-1/4">
+        <a
+          href="#"
+          target="_parent"
+          class="flex flex-col items-center text-gray-600 hover:text-blue-500 py-2"
+        >
+          <span>รายการรอนำเรียน</span>
+        </a></card
+      >
+      <!-- Tab 4 -->
+      <card class="relative w-1/4">
+        <a
+          href="#"
+          target="_parent"
+          class="flex flex-col items-center text-gray-600 hover:text-blue-500 py-2"
+        >
+          <span >บัญชีนำเรียน</span>
+        </a></card
+      >
+    </div>
+  </body>
+</html>
