@@ -1,3 +1,4 @@
+<!-- //register.html -->
 <!DOCTYPE html>
 <html lang="th">
   <head>
@@ -487,14 +488,20 @@
         </div>
 
         <!-- Buttons -->
-        <div class="mt-6 flex items-center justify-end gap-x-6">
-          <a href="after_register.html" class="text-sm/6 font-semibold text-gray-900"
-            >ย้อนกลับ</a
+        <div class="mt-6 mb-12 flex items-center justify-center gap-x-6">
+          <button
+            type="cancel"
+            id="cancelButton"
+            class="text-sm/6 font-semibold rounded-md bg-gray-200 px-3 py-2 text-black shadow-sm hover:bg-gray-300 focus-visible:outline-2 focus-visible:outline-gray-200"
+            onclick="window.location.href='dashboard.html';"
           >
+            ย้อนกลับ
+          </button>
+
           <button
             type="submit"
             id="submitButton"
-            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-indigo-600"
+            class="text-sm/6 font-semibold rounded-md bg-indigo-600 px-3 py-2 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-indigo-600"
           >
             บันทึก
           </button>
@@ -650,6 +657,7 @@
             if (response.ok) {
               alert("บันทึกข้อมูลสำเร็จ!");
               window.location.href = "dashborad.html"; // เปลี่ยนไปหน้า after_register.html
+            
             } else {
               alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
             }
@@ -658,7 +666,6 @@
             alert("ไม่สามารถเชื่อมต่อกับ API ได้");
           }
         });
-
     </script>
   </body>
 </html>

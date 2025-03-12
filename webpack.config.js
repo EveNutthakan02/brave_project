@@ -102,6 +102,19 @@ module.exports = {
         { name: "viewport", content: "width=device-width, initial-scale=1.0" },
       ],
     }),
+    new HtmlWebpackPlugin({
+      title: "RESUBMIT",
+      filename: "resubmit.html",
+      template: path.join(__dirname, "src/resubmit.html"),
+      templateParameters: {},
+      inject: true,
+      mobile: true,
+      lang: "th-TH",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+      ],
+    }),
   ],
   module: {
     rules: [

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <title>RESUBMIT</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script defer src="main.js"></script></head>
+  <body>
+    <div>
+      <iframe src="banner.html"></iframe>
+    </div>
+    <div>
+      <h1 class="text-3xl font-bold text-center">ยื่นขอรับสิทธิใหม่อีกครั้ง</h1>
+    </div>
+
+    <!--ดึงข้อมูลในการลงทะเบียนทั้งหมด-->
+    <!-- Form -->
+    <div class="mt-10">
+      <form>
+        <div class="mx-20">
+          <fieldset>
+            <div class="mt-6 flex items-center justify-center space-x-6">
+              <div class="flex items-center gap-x-3">
+                <input
+                  id="push-new"
+                  name="renew-pushNotifications"
+                  type="radio"
+                  class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+                />
+                <label
+                  for="push-new"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >ยื่นเรื่องรายใหม่</label
+                >
+              </div>
+              <div class="flex items-center gap-x-3">
+                <input
+                  id="push-broken"
+                  name="renew-pushNotifications"
+                  type="radio"
+                  class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+                />
+                <label
+                  for="push-broken"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >บัตรชำรุด</label
+                >
+              </div>
+              <div class="flex items-center gap-x-3">
+                <input
+                  id="push-lost"
+                  name="renew-pushNotifications"
+                  type="radio"
+                  class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+                />
+                <label
+                  for="push-lost"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >บัตรสูญหาย</label
+                >
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="space-y-12 ml-5">
+          <div
+            class="mx-20 text-xl font-bold mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6"
+          >
+            <div class="sm:col-span-1">
+              <h2>ผู้มีสิทธิ</h2>
+            </div>
+            <div class="sm:col-span-1">
+              <h2>ข้อมูลส่วนตัว</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 mx-70 grid gap-y-8 sm:grid-cols-9">
+          <div class="sm:col-span-2">
+            <label
+              for="renew-idRights"
+              class="block text-sm/6 font-medium text-gray-900"
+              >เลขประจำตัวประชาชน</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-idRights"
+                id="renew-idRights"
+                class="block w-48 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="sm:col-span-2 ml-12">
+            <label
+              for="renew-titleName"
+              class="block text-sm/6 font-medium text-gray-900"
+              >คำนำหน้าชื่อ</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-titleName"
+                id="renew-titleName"
+                class="block w-25 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label
+              for="renew-firstName"
+              class="block text-sm/6 font-medium text-gray-900"
+              >ชื่อ</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-firstName"
+                id="renew-firstName"
+                class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label
+              for="renew-lastName"
+              class="block text-sm/6 font-medium text-gray-900"
+              >สกุล</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-lastName"
+                id="renew-lastName"
+                class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown -->
+        <div class="mx-70 mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="text-xl font-bold sm:col-span-4">
+            <h2>ราชการสงคราม</h2>
+          </div>
+          <div class="sm:col-span-5">
+            <label
+              for="renew-warEvent"
+              class="block text-sm font-medium text-gray-900 mb-2"
+              >เหตุการณ์สงคราม</label
+            >
+            <output
+              id="renew-warEvent"
+              name="renew-warEvent"
+              class="block w-48 rounded-md border-0 bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+              onchange="updateDropdownStyle(this)"
+            >
+            </output>
+          </div>
+        </div>
+
+        <!--ราชกิจจาฯ-->
+        <div class="mx-70 mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="text-xl font-bold sm:col-span-4">
+            <h2>ราชกิจจาฯ</h2>
+          </div>
+          <div class="sm:col-span-5">
+            <label
+              for="renew-book"
+              class="block text-sm/6 font-medium text-gray-900"
+              >เล่ม, ลงวันที่</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-book"
+                id="renew-book"
+                class="block w-48 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+
+          <div class="sm:col-span-5">
+            <label
+              for="renew-pages"
+              class="block text-sm/6 font-medium text-gray-900"
+              >ตอน, หน้า, บรรทัด</label
+            >
+            <div class="mt-2">
+              <output
+                name="renew-pages"
+                id="renew-pages"
+                class="block w-48 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+              ></output>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-12 ml-5">
+          <div
+            class="mx-65 text-sm font-medium mt-5 grid gap-x-6 gap-y-8 sm:grid-cols-6"
+          >
+            <div class="sm:col-span-5">
+              <h6>
+                *กรุณาใส่ตัวเลือกที่ต้องการ โดยใช้เครื่องหมายคอมม่า
+                (,)เพื่อแบ่งระหว่างแต่ละตัวเลือก เช่น ถ้าต้องการใส่ตัวเลือก
+                'แอปเปิ้ล กล้วย ส้ม' กรุณาพิมพ์ดังนี้ แอปเปิ้ล, กล้วย, ส้ม :
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!--ผู้ขอรับสิทธิ-->
+        <div class="space-y-12 ml-5">
+          <div
+            class="mx-20 text-xl font-bold mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6"
+          >
+            <div class="sm:col-span-1">
+              <h2>ผู้ขอรับสิทธิ</h2>
+            </div>
+          </div>
+        </div>
+        <!--select ผู้รับสิทธิ-->
+        <div class="mx-70 space-y-2">
+          <label
+            for="renew_pushOption"
+            class="block text-sm/6 font-medium text-gray-900"
+            >สถานะผู้รับสิทธิ</label
+          >
+          <output
+            name="renew_pushOption"
+            id="renew_pushOption"
+            class="block w-48 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+          ></output>
+        </div>
+        <!--ทายาทรับสิทธิแทน-->
+        <div class="mt-10">
+          <form>
+            <div class="mx-70 grid gap-y-8 sm:grid-cols-9">
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-idHeir"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >เลขประจำตัวประชาชนทายาท</label
+                >
+                <div class="mt-2">
+                  <output
+                    name="renew-idHeir"
+                    id="renew-idHeir"
+                    class="block w-48 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+
+              <div class="sm:col-span-2 ml-12">
+                <label
+                  for="renew-titleHeir"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >คำนำหน้าชื่อ</label
+                >
+                <div class="mt-2">
+                  <output
+                    name="renew-titleHeir"
+                    id="renew-titleHeir"
+                    class="block w-25 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-firstHeir"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >ชื่อ</label
+                >
+                <div class="mt-2">
+                  <output
+                    name="renew-firstHeir"
+                    id="renew-firstHeir"
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-lastHeir"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >สกุล</label
+                >
+                <div class="mt-2">
+                  <output
+                    name="renew-lastHeir"
+                    id="renew-lastHeir"
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!--ที่หนังสือ-->
+        <div class="space-y-12 ml-5">
+          <div
+            class="mx-20 text-xl font-bold mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6"
+          >
+            <div class="sm:col-span-1">
+              <h2>ที่หนังสือหน่วย</h2>
+            </div>
+          </div>
+        </div>
+        <!--ที่หนังสือหน่วย-->
+        <div class="mt-10">
+          <form>
+            <div class="mx-70 grid gap-y-8 sm:grid-cols-9">
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-affiliationName"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >สังกัด</label
+                >
+                <div class="mt-2">
+                  <output
+                    name="renew-affiliationName"
+                    id="renew-affiliationName"
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-bookNum"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >ที่หนังสือ</label
+                >
+                <div class="mt-2">
+                  <output
+                    type="date"
+                    name="renew-bookNum"
+                    id="renew-bookNum"
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  ></output>
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label
+                  for="renew-bookDate"
+                  class="block text-sm font-medium text-gray-900"
+                >
+                  เลือกวันที่
+                </label>
+                <div class="mt-2">
+                  <output
+                    type="date"
+                    id="renew-bookDate"
+                    name="renew-bookDate"
+                    class="block w-40 rounded-md bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+                  ></output>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!--วันที่-->
+        <div class="space-y-12 ml-5">
+          <div
+            class="mx-20 text-xl font-bold mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6"
+          >
+            <div class="sm:col-span-1">
+              <h2>วันที่ขอรับสิทธิ</h2>
+            </div>
+          </div>
+        </div>
+        <!--วันที่ขอรับสิทธิ-->
+        <div class="mx-70">
+          <label
+            for="renew-dateVerify"
+            class="block text-sm font-medium text-gray-900"
+          >
+            เลือกวันที่
+          </label>
+          <div class="mt-2">
+            <output
+              id="renew-dateVerify"
+              name="renew-dateVerify"
+              class="block w-40 rounded-md bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            ></output>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 mb-12 flex items-center justify-center gap-x-6">
+          <button
+            type="cancel"
+            id="cancelButton"
+            class="text-sm/6 font-semibold rounded-md bg-gray-200 px-3 py-2 text-black shadow-sm hover:bg-gray-300 focus-visible:outline-2 focus-visible:outline-gray-200"
+            onclick="window.location.href='after_register.html';"
+          >
+            ย้อนกลับ
+          </button>
+
+          <button
+            type="submit"
+            id="submitButton"
+            class="text-sm/6 font-semibold rounded-md bg-indigo-600 px-3 py-2 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-indigo-600"
+          >
+            ส่งเรื่องอีกครั้ง
+          </button>
+        </div>
+      </form>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ดึงข้อมูลจาก sessionStorage
+        const pushNotifications = sessionStorage.getItem("pushNotifications");
+        const idCard = sessionStorage.getItem("idCard");
+        const titleName = sessionStorage.getItem("titleName");
+        const firstName = sessionStorage.getItem("firstName");
+        const lastName = sessionStorage.getItem("lastName");
+        // const warEvent = sessionStorage.getItem("warEvent");
+        const book = sessionStorage.getItem("book");
+        const pages = sessionStorage.getItem("pages");
+
+        //const pushOption = sessionStorage.getItem("pushOption");
+        const idHeir = sessionStorage.getItem("idHeir");
+        const titleHeir = sessionStorage.getItem("titleHeir");
+        const firstHeir = sessionStorage.getItem("firstHeir");
+        const lastHeir = sessionStorage.getItem("lastHeir");
+        const affiliationName = sessionStorage.getItem("affiliationName");
+        const bookNum = sessionStorage.getItem("bookNum");
+
+        document.getElementById("renew-idRights").textContent =
+          sessionStorage.getItem("idCard") || "ไม่มีข้อมูล";
+        document.getElementById("renew-titleName").textContent =
+          sessionStorage.getItem("titleName") || "ไม่มีข้อมูล";
+        document.getElementById("renew-firstName").textContent =
+          sessionStorage.getItem("firstName") || "ไม่มีข้อมูล";
+        document.getElementById("renew-lastName").textContent =
+          sessionStorage.getItem("lastName") || "ไม่มีข้อมูล";
+        // document.getElementById("renew-warEvent").textContent =
+        //   sessionStorage.getItem("warEvent") || "ไม่มีข้อมูล";
+        document.getElementById("renew-book").textContent =
+          sessionStorage.getItem("book") || "ไม่มีข้อมูล";
+        document.getElementById("renew-pages").textContent =
+          sessionStorage.getItem("pages") || "ไม่มีข้อมูล";
+
+        // document.getElementById("renew_pushOption").textContent =
+        //   sessionStorage.getItem("pushOption") || "ไม่มีข้อมูล";
+        document.getElementById("renew-idHeir").textContent =
+          sessionStorage.getItem("idHeir") || idCard;
+        document.getElementById("renew-titleHeir").textContent =
+          sessionStorage.getItem("titleHeir") || titleName;
+        document.getElementById("renew-firstHeir").textContent =
+          sessionStorage.getItem("firstHeir") || firstName;
+        document.getElementById("renew-lastHeir").textContent =
+          sessionStorage.getItem("lastHeir") || lastName;
+
+        document.getElementById("renew-affiliationName").textContent =
+          sessionStorage.getItem("affiliationName") || "ไม่มีข้อมูล";
+        document.getElementById("renew-bookNum").textContent =
+          sessionStorage.getItem("bookNum") || "ไม่มีข้อมูล";
+
+        //ราชการสงคราม
+        const warEvent = sessionStorage.getItem("warEvent");
+        // ถ้ามีค่า warEvent ให้แปลงเป็นชื่อที่ถูกต้อง
+        if (warEvent) {
+          document.getElementById("renew-warEvent").textContent =
+            changeWar(warEvent);
+        } else {
+          document.getElementById("renew-warEvent").textContent = "ไม่มีข้อมูล";
+        }
+        // ฟังก์ชันเปลี่ยนค่า ID ของ warEvent เป็นชื่อเหตุการณ์
+        function changeWar(eventId) {
+          const warEventMapping = {
+            " ww1 ": "สงครามโลกครั้งที่ 1",
+            "indochina-war": "สงครามอินโดจีน",
+            "ww2": "สงครามโลกครั้งที่ 2",
+            "korean-war": "สงครามเกาหลี",
+            "vietnam-war": "สงครามเวียดนาม",
+          };
+          return warEventMapping[eventId] || "ไม่พบข้อมูล";
+        }
+        //สถานะผู้รับสิทธิ
+        const pushOption = sessionStorage.getItem("pushOption");
+        // ถ้ามีค่า warEvent ให้แปลงเป็นชื่อที่ถูกต้อง
+        if (pushOption) {
+          document.getElementById("renew_pushOption").textContent =
+            changeStatus(pushOption);
+        } else {
+          document.getElementById("renew_pushOption").textContent = "ไม่มีข้อมูล";
+        }
+        // ฟังก์ชันเปลี่ยนค่า ID ของ warEvent เป็นชื่อเหตุการณ์
+        function changeStatus(statusId) {
+          const pushOptionMapping = {
+            "push-myself": "รับสิทธิเอง",
+            "push-heir": "ทายาทรับสิทธิแทน",
+          };
+          return pushOptionMapping[statusId] || "ไม่พบข้อมูล";
+        }
+
+        //วันที่หนังสือหน่วย
+        const bookDate = sessionStorage.getItem("bookDate");
+        if (bookDate) {
+          const formattedDate = formatThaiDate(bookDate);
+          document.getElementById("renew-bookDate").textContent = formattedDate;
+        } else {
+          document.getElementById("renew-bookDate").textContent = "ไม่มีข้อมูล";
+        }
+//วันที่ขอรับสิทธิ
+        const dateVerify = sessionStorage.getItem("dateVerify");
+        if (dateVerify) {
+          const formattedDate = formatThaiDate(dateVerify);
+          document.getElementById("renew-dateVerify").textContent =
+            formattedDate;
+        } else {
+          document.getElementById("renew-dateVerify").textContent =
+            "ไม่มีข้อมูล";
+        }
+      });
+
+      // ฟังก์ชันแปลงวันที่เป็นรูปแบบไทย
+      function formatThaiDate(dateString) {
+        const date = new Date(dateString);
+        const thaiMonths = [
+          "มกราคม",
+          "กุมภาพันธ์",
+          "มีนาคม",
+          "เมษายน",
+          "พฤษภาคม",
+          "มิถุนายน",
+          "กรกฎาคม",
+          "สิงหาคม",
+          "กันยายน",
+          "ตุลาคม",
+          "พฤศจิกายน",
+          "ธันวาคม",
+        ];
+        const day = date.getUTCDate(); // วันที่
+        const month = thaiMonths[date.getUTCMonth()]; // เดือน (index 0-11)
+        const year = date.getUTCFullYear() + 543; // แปลงเป็น พ.ศ.
+
+        return `${day} ${month} ${year}`;
+      }
+
+
+      //  // จัดการ Event เมื่อกดปุ่ม "บันทึก"
+      // document
+      //   .getElementById("submitButton")
+      //   .addEventListener("click", async (event) => {
+      //     event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+
+      //     // ดึงข้อมูลจากฟอร์ม
+      //     const data = {
+      //       pushNotifications: document.querySelector(
+      //         'input[name="push-notifications"]:checked'
+      //       )?.id, //ประเภท
+      //       idCard: document.getElementById("id-card").value, //ปชช.ผู้มีสิทธิ
+      //       titleName: document.getElementById("title-name").value, //คำนำ
+      //       firstName: document.getElementById("first-name").value, //ชื่อ
+      //       lastName: document.getElementById("last-name").value, //สกุล
+      //       warEvent: document.getElementById("war-select").value, //ราชสงคราม
+      //       book: document.getElementById("book").value, //ราชกิจจาฯ เล่ม?
+      //       pages: document.getElementById("pages").value, //ราชกิจจาฯ หน้า?
+      //       pushOption: document.querySelector(
+      //         'input[name="push-option"]:checked'
+      //       )?.id, //ผู้ขอรับสิทธิ
+      //       idHeir: document.getElementById("idHeir").value,
+      //       titleHeir: document.getElementById("titleHeir").value,
+      //       firstHeir: document.getElementById("firstHeir").value,
+      //       lastHeir: document.getElementById("lastHeir").value,
+
+      //       affiliationName: document.getElementById("affiliationName").value, //สังกัด
+      //       bookNum: document.getElementById("bookNum").value,
+      //       bookDate: document.getElementById("bookDate").value,
+      //       dateVerify: document.getElementById("dateVerify").value,
+      //     };
+      //     //ทายาทรับสิทธิแทน
+      //     if (document.getElementById("push-heir").checked) {
+      //       data.idHeir = document.getElementById("idHeir").value;
+      //       data.titleHeir = document.getElementById("titleHeir").value;
+      //       data.firstHeir = document.getElementById("firstHeir").value;
+      //       data.lastHeir = document.getElementById("lastHeir").value;
+      //     }
+      //     //ไม่ได้กรอกข้อมูลทายาท
+      //     if (document.getElementById("push-heir").checked) {
+      //       if (
+      //         !data.idHeir ||
+      //         !data.titleHeir ||
+      //         !data.firstHeir ||
+      //         !data.lastHeir
+      //       ) {
+      //         alert("กรุณากรอกข้อมูลของทายาทให้ครบถ้วน");
+      //         return;
+      //       }
+      //     }
+
+      //     // ส่งข้อมูลไปยัง API
+      //     try {
+      //       const response = await fetch("http://localhost:3000/submit", {
+      //         method: "POST",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //         body: JSON.stringify(data),
+      //       });
+
+      //       if (response.ok) {
+      //         alert("บันทึกข้อมูลสำเร็จ!");
+      //         window.location.href = "dashborad.html"; // เปลี่ยนไปหน้า after_register.html
+            
+      //       } else {
+      //         alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+      //       }
+      //     } catch (error) {
+      //       console.error("Error:", error);
+      //       alert("ไม่สามารถเชื่อมต่อกับ API ได้");
+      //     }
+      //   });
+    </script>
+  </body>
+  <style>
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+  </style>
+</html>

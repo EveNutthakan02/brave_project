@@ -65,15 +65,27 @@
               if (data.found) {
                 // แสดงผลเมื่อพบข้อมูล
                 // เก็บข้อมูลลง sessionStorage
+               sessionStorage.setItem("pushNotifications", data.data.pushNotifications);
                 sessionStorage.setItem("idCard", searchInput);
-                sessionStorage.setItem("titleName", data.data.titleName || "");
-                sessionStorage.setItem("firstName", data.data.firstName || "");
-                sessionStorage.setItem("lastName", data.data.lastName || "");
+                sessionStorage.setItem("titleName", data.data.titleName);
+                sessionStorage.setItem("firstName", data.data.firstName);
+                sessionStorage.setItem("lastName", data.data.lastName);
+
+                sessionStorage.setItem("warEvent", data.data.warEvent);
+                sessionStorage.setItem("book", data.data.book);
+                sessionStorage.setItem("pages", data.data.pages);
+                sessionStorage.setItem("pushOption", data.data.pushOption);
                 sessionStorage.setItem("idHeir", data.data.idHeir || "");
                 sessionStorage.setItem("titleHeir", data.data.titleHeir || "");
                 sessionStorage.setItem("firstHeir", data.data.firstHeir || "");
                 sessionStorage.setItem("lastHeir", data.data.lastHeir || "");
-                sessionStorage.setItem("dateVerify", data.data.dateVerify || "ไม่มีข้อมูล");
+
+                sessionStorage.setItem("affiliationName", data.data.affiliationName);
+                sessionStorage.setItem("bookNum", data.data.bookNum);
+                sessionStorage.setItem("bookDate", data.data.bookDate);
+                sessionStorage.setItem(
+                  "dateVerify",
+                  data.data.dateVerify);
                 sessionStorage.setItem("message", "พบข้อมูลของคุณ");
               } else {
                 // แสดงผลเมื่อไม่พบข้อมูล
